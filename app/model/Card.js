@@ -8,9 +8,8 @@ const Schema = mongoose.Schema;
  */
 const Card = new Schema({
     token: { type: String, unique: true },
-    qrcode: { type: String },
-    userDeviceId: { type: String, unique: true },
-    section: { type: Schema.Types.ObjectId, ref: 'Section' }
+    userDeviceId: { type: String, unique: true, default: null },
+    section: { type: Schema.Types.ObjectId, ref: 'Section', default: null }
 },
 {
     collection: 'cards'
