@@ -6,8 +6,11 @@ const router = Router();
 
 router.get('/', async (req, res) => {
     try {
+        const { token } = req.query;
+        let query = {}
+        if (token) query.token = token;
         const cards = await Card
-            .find()
+            .find(query)
             .populate('section');
         res.json(cards);
     } catch(e) {
