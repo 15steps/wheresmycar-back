@@ -6,7 +6,9 @@ const router = Router();
 
 router.get('/', async (req, res) => {
     try {
-        const cards = await Card.find();
+        const cards = await Card
+            .find()
+            .populate('section');
         res.json(cards);
     } catch(e) {
         console.log(e);
