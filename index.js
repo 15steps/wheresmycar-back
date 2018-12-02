@@ -17,7 +17,6 @@ app.use('/api', router);
 
 // // Rota de fallback
 app.use((req, res) => {
-    console.log('show')
     res.status(404).json({
         error: 'Route not found'
     });

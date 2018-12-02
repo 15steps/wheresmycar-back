@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  server:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+      - MONGO_HOST=mongo
+    depends_on:
+      - mongo
+    networks:
+      - wheresmycar_net
+  
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    restart: always
+    networks:
+      - wheresmycar_net
+    volumes:
+      - data:/data/db
+
+networks:
+  wheresmycar_net:
+volumes:
+  data:

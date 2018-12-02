@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const { code, parkingSpots } = req.body;
         const newSection = await Section.findByIdAndUpdate(req.params.id, {
@@ -60,7 +60,7 @@ router.put('/:id', (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const section = await Section.findByIdAndRemove(req.params.id);
         res.json(section);
