@@ -50,11 +50,11 @@ router.post('/', async (req, res) => {
 router.put('/:token', async (req, res) => {
     try {
         const { token } = req.params;
-        const { sectionCode } = req.body;
+        const { sectionCode, unregister } = req.body;
         const section = await Section.findOne({code: sectionCode});
-            const card = await Card.findOneAndUpdate({token}, {
+        const card = await Card.findOneAndUpdate({token}, {
             token: token,
-            section: section._id
+            section: unregister ? null: section._id
         },
         {new: true});
         res.json(card);
