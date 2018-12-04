@@ -13,7 +13,7 @@ export default class App extends Component {
             this.setState({
                 data 
             });
-        }, 2000);
+        }, 1000);
     }
 
     render() {
@@ -32,14 +32,14 @@ export default class App extends Component {
                 {this.state.data.map((card, id) => (
                     <>
                         <div key={id} style={{
-                                backgroundColor: card.token ? 'green' : 'red',
+                                backgroundColor: card.section ? 'green' : 'red',
                                 padding: 20,
                                 width: 500,
                                 fontSize: 30,
                                 marginTop: 5
                             }}>
-                            Token: {card.token}
-                            {card.token && <span>{` (em uso)`}</span>}
+                            Cartão: {card.token}
+                            {card.section && <span>{` (em uso)`}</span>}
                         </div>
                     </>
                 ))
